@@ -5,23 +5,18 @@
 </template>
 
 <script>
-const API_KEY=process.env.VUE_APP_ENV_SHARESAPI
+
 import StockChart from './components/StockChart.vue'
 
 export default {
   name: 'App',
   data(){
     return {
-      msft: []
+
     }
   },
   components: {
     'stock-chart': StockChart
-  },
-  mounted(){
-    fetch(`https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=MSFT&outputsize=compact&apikey=${API_KEY}`)
-    .then(res => res.json())
-    .then(data => this.msft = data)
   }
 }
 </script>
