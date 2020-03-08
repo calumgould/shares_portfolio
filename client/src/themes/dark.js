@@ -30,7 +30,7 @@ Highcharts.theme = {
     },
     subtitle: {
         style: {
-            color: '#E0E0E3',
+            color: 'ghostwhite',
             textTransform: 'uppercase'
         }
     },
@@ -38,7 +38,7 @@ Highcharts.theme = {
         gridLineColor: '#707073',
         labels: {
             style: {
-                color: '#E0E0E3'
+                color: 'ghostwhite'
             }
         },
         lineColor: '#707073',
@@ -54,7 +54,7 @@ Highcharts.theme = {
         gridLineColor: '#707073',
         labels: {
             style: {
-                color: '#E0E0E3'
+                color: 'ghostwhite'
             }
         },
         lineColor: '#707073',
@@ -68,7 +68,7 @@ Highcharts.theme = {
         }
     },
     tooltip: {
-        backgroundColor: 'rgba(0, 0, 0, 0.85)',
+        backgroundColor: 'dimgrey',
         style: {
             color: '#F0F0F0'
         }
@@ -98,7 +98,7 @@ Highcharts.theme = {
     legend: {
         backgroundColor: 'rgba(0, 0, 0, 0.5)',
         itemStyle: {
-            color: '#E0E0E3'
+            color: 'ghostwhite'
         },
         itemHoverStyle: {
             color: '#FFF'
@@ -114,7 +114,7 @@ Highcharts.theme = {
     },
     credits: {
         style: {
-            color: '#666'
+            color: '#3e3e40'
         }
     },
     labels: {
@@ -148,14 +148,14 @@ Highcharts.theme = {
             },
             states: {
                 hover: {
-                    fill: '#707073',
+                    fill: '#89B802',
                     stroke: '#000000',
                     style: {
                         color: 'ghostwhite'
                     }
                 },
                 select: {
-                    fill: '#000003',
+                    fill: '#89B802',
                     stroke: '#000000',
                     style: {
                         color: 'ghostwhite'
@@ -198,5 +198,5 @@ Highcharts.theme = {
         trackBorderColor: '#404043'
     }
 };
-// Apply the theme
+
 Highcharts.setOptions(Highcharts.theme);

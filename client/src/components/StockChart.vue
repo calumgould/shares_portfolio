@@ -15,23 +15,26 @@ export default {
     fetch(`https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=MSFT&outputsize=compact&apikey=${API_KEY}`)
     .then(res => res.json())
     .then(data => this.msft = data)
+
+    this.getCloseValues()
   },
   data(){
     return {
       msft: [],
 
+      // CHART START //
       stockOptions: {
         rangeSelector: {
           selected: 1
         },
 
         title: {
-          text: 'AAPL Stock Price'
+          text: 'MSFT Stock Price'
         },
 
         series: [{
-          name: 'AAPL Stock Price',
-          data: [10, 20, 30, 60, 40, 30, 20, 20],
+          name: 'MSFT Stock Price',
+          data: [10, 20, 30, 30, 45, 50],
           type: 'areaspline',
           threshold: null,
           tooltip: {
@@ -39,7 +42,7 @@ export default {
           },
           fillColor: {
             linearGradient: {
-              x1: 0,
+              x1: 1,
               y1: 0,
               x2: 0,
               y2: 1
@@ -51,9 +54,16 @@ export default {
           }
         }]
       }
+      // CHART END //
+    }
+  },
+  methods: {
+    getCloseValues(){
+      console.log(this.msft);
+    }
   }
 }
-}
+
 
 
 </script>
