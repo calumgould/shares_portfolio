@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="chart-container">
-    <highcharts class="stock" :constructor-type="'stockChart'" :options="stockOptions" />
+    <highcharts v-if="msft" class="stock" :constructor-type="'stockChart'" :options="stockOptions" />
   </div>
 </template>
 
@@ -13,53 +13,78 @@ export default {
   name: "stock-chart",
   mounted(){
     fetch(`https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=MSFT&outputsize=compact&apikey=${API_KEY}`)
-    .then(res => res.json())
-    .then(data => this.msft = data)
+      .then(res => res.json())
+      .then(data => {
+        this.msft = data
+      })
 
-    this.getCloseValues()
-  },
-  data(){
-    return {
-      msft: [],
-
-      // CHART START //
-      stockOptions: {
-        rangeSelector: {
-          selected: 1
-        },
-
-        title: {
-          text: 'MSFT Stock Price'
-        },
-
-        series: [{
-          name: 'MSFT Stock Price',
-          data: [10, 20, 30, 30, 45, 50],
-          type: 'areaspline',
-          threshold: null,
-          tooltip: {
-            valueDecimals: 2
+    },
+    data(){
+      return {
+        msft: null,
+        stockOptions: {
+          rangeSelector: {
+            selected: 4
           },
-          fillColor: {
-            linearGradient: {
-              x1: 1,
-              y1: 0,
-              x2: 0,
-              y2: 1
+          title: {
+            text: 'MSFT Stock Price'
+          },
+          subtitle: {
+            text: 'Source: Alpha Vantage'
+          },
+          series: [{
+            name: 'MSFT Stock Price',
+            data: [],
+            type: 'areaspline',
+            threshold: null,
+            pointStart: Date.UTC(2019, 10, 14),
+            pointInterval: 1000 * 3600 * 24,
+            tooltip: {
+              valueDecimals: 2
             },
-            stops: [
-              [0, Highcharts.getOptions().colors[0]],
-              [1, Highcharts.color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
-            ]
-          }
-        }]
+            fillColor: {
+              linearGradient: {
+                x1: 0,
+                y1: 0,
+                x2: 0,
+                y2: 1
+              },
+              stops: [
+                [0, Highcharts.getOptions().colors[0]],
+                [1, Highcharts.color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
+              ]
+            }
+          }]
+        }
       }
-      // CHART END //
+    },
+    watch: {
+      closeValuesResult: function(newValue){
+        this.stockOptions.series[0].data = newValue
+      //   this.stockOptions = {
+      //     ...this.stockOptions,
+      //     series: [{
+      //       ...this.stockOptions.series[0],
+      //       data: this.closeValuesResult
+      //     }
+      //   ]
+      // }
     }
   },
-  methods: {
-    getCloseValues(){
-      console.log(this.msft);
+  computed: {
+    closeValuesResult: function(){
+      if (!this.msft) return;
+      const closeValues = []
+      const data = this.msft['Time Series (Daily)']
+      for (let date in data) {
+
+        let closeValue = data[date]['4. close']
+        closeValues.unshift(closeValue)
+      }
+      const result =  closeValues.map(function(value) {
+        return parseFloat(value)
+      })
+      return result;
     }
   }
 }
@@ -70,9 +95,9 @@ export default {
 
 <style lang="css" scoped>
 
-  .chart-container {
-    width: 100%;
-    height: 400px;
-  }
 
+.chart-container {
+  width: 100%;
+  height: 400px;
+}
 </style>
