@@ -12,8 +12,7 @@ Highcharts.theme = {
         backgroundColor: {
             linearGradient: { x1: 0, y1: 0, x2: 1, y2: 1 },
             stops: [
-                [0, '#2a2a2b'],
-                [1, '#3e3e40']
+                [0, '#2a2a2b']
             ]
         },
         style: {
@@ -46,7 +45,7 @@ Highcharts.theme = {
         tickColor: '#707073',
         title: {
             style: {
-                color: '#A0A0A3'
+                color: 'ghostwhite'
             }
         }
     },
@@ -63,7 +62,7 @@ Highcharts.theme = {
         tickWidth: 1,
         title: {
             style: {
-                color: '#A0A0A3'
+                color: 'ghostwhite'
             }
         }
     },
