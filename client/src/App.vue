@@ -20,7 +20,7 @@
           <h2 class="list-head">Search</h2>
 
         </div>
-        <stock-chart></stock-chart>
+        <summary-stock-chart></summary-stock-chart>
       </div>
     </div>
 
@@ -58,6 +58,7 @@ import StockService from './services/StockService.js'
 import { eventBus } from '@/main.js'
 import AddStock from './components/AddStockForm.vue'
 import SummaryList from './components/SummaryList.vue'
+import SummaryStockChart from './components/SummaryStockChart.vue'
 
 export default {
   name: 'App',
@@ -85,7 +86,8 @@ export default {
     'stocks-list': StockList,
     'stock-detail': StockDetail,
     'add-stock': AddStock,
-    'summary-list': SummaryList
+    'summary-list': SummaryList,
+    'summary-stock-chart': SummaryStockChart
   },
   mounted() {
     eventBus.$on('submit-stock', (stock) => {
