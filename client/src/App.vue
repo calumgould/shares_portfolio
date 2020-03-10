@@ -66,15 +66,18 @@ export default {
     return {
       stocks: [
         {
-          name: 'APPL',
+          name: 'Apple Inc.',
+          symbol: 'APPL',
           shares: 75
         },
         {
-          name: 'MSFT',
+          name: 'Microsoft',
+          symbol: 'MSFT',
           shares: 54
         },
         {
-          name: 'GOOG',
+          name: 'Google',
+          symbol:'GOOG',
           shares: 32
         }
       ],

@@ -1,5 +1,5 @@
 <template lang="html">
-  <li class="list-item" v-on:click="handleClick">{{stock.name}}</li>
+  <li class="list-item" v-on:click="handleClick">{{stock.symbol}}</li>
 </template>
 
 <script>
