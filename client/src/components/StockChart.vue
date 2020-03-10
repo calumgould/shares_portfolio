@@ -97,19 +97,8 @@ export default {
       const data = this.stock['Time Series (Daily)']
       const startDate = Object.keys(data)[Object.keys(data).length-1]
       const UTCStartDate = startDate.split('-')
-      // if (UTCStartDate[1][0] == 0) {
-      //   UTCStartDate[1] = UTCStartDate[1].slice(1, 2)
-      // }
-      // if (UTCStartDate[2][0] == 0) {
-      //   UTCStartDate[2] = UTCStartDate[2].slice(1, 2)
-      // }
-
-      // UTCStartDate[0] = parseInt(UTCStartDate[0])
-      // UTCStartDate[1] = parseInt(UTCStartDate[1])
-      // UTCStartDate[2] = parseInt(UTCStartDate[2])
 
       UTCStartDate[1] = UTCStartDate[1] - 1
-      console.log(UTCStartDate);
       return Date.UTC(...UTCStartDate)
     }
   },

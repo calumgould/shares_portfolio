@@ -4,6 +4,8 @@ import HighchartsVue from 'highcharts-vue'
 import Highcharts from 'highcharts'
 import stockInit from 'highcharts/modules/stock'
 
+export const eventBus = new Vue();
+
 stockInit(Highcharts)
 
 Vue.config.productionTip = false
