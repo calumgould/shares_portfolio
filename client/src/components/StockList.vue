@@ -1,9 +1,9 @@
 <template lang="html">
-  <div id="stockList">
+  <div id="stockList" class="stock-list">
   <ul>
     <list-item v-for="(stock, index) in stocks" :stock="stock" :key="index"></list-item>
   </ul>
-  <add-stock></add-stock>
+  <add-stock class="list-item-add"></add-stock>
 </div>
 </template>
 

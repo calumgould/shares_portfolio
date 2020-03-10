@@ -57,16 +57,20 @@
       </div>
     </div>
 
+
+
     <div id="StockChart" class="tabcontent">
-      <div class="tabelement">
-        <stocks-list :stocks="stocks"></stocks-list>
-      </div>
 
-      <stock-detail v-if="selectedStock" :stock="selectedStock"></stock-detail>
 
-      <div class="tabelement">
+
+      <div class="chart-container">
+        <div class="list-container">
+          <h2 class="list-head">Your Shares</h2>
+          <stocks-list :stocks="stocks"></stocks-list>
+        </div>
         <stock-chart></stock-chart>
       </div>
+        <stock-detail v-if="selectedStock" :stock="selectedStock"></stock-detail>
     </div>
 
     <div class="footer">
@@ -123,27 +127,23 @@ export default {
     });
 
     eventBus.$on('stock-selected', stock => (this.selectedStock = stock));
-    
+
     this.openDefaultTab('defaultOpen');
   },
   methods: {
     openTab(pageName) {
-      // Declare all variables
       let i, tabcontent, tablinks;
 
-      // Get all elements with class="tabcontent" and hide them
       tabcontent = document.getElementsByClassName("tabcontent");
       for (i = 0; i < tabcontent.length; i++) {
         tabcontent[i].style.display = "none";
       }
 
-      // Get all elements with class="tablinks" and remove the class "active"
       tablinks = document.getElementsByClassName("tablinks");
       for (i = 0; i < tablinks.length; i++) {
         tablinks[i].className = tablinks[i].className.replace(" active", "");
       }
 
-      // Show the current tab, and add an "active" class to the button that opened the tab
       document.getElementById(pageName).style.display = "block";
       event.currentTarget.className += " active";
     },
@@ -161,7 +161,7 @@ export default {
     color: ghostwhite;
     font-size: 4em;
     text-align: center;
-    padding: 0.5em 0 0 0;
+    padding: 0.5em 0 0.5em 0;
   }
 
   .header h1 span, .stock h2, .total h1 span, .list-item h2 span, .sponsor span {
@@ -178,7 +178,7 @@ export default {
 
   .summary-container {
     width: 90%;
-    margin: 2em 5%;
+    margin: 1em 5% 2em 5%;
     padding: 1em;
     background-color: #4c4c4d;
     border-radius: 2em;
@@ -219,7 +219,7 @@ export default {
   .chart-container {
     width: 90%;
     display: flex;
-    margin: 0 5%;
+    margin: 2em 5%;
   }
 
   .list-container {
@@ -235,14 +235,33 @@ export default {
     padding: 1em 0 0.5em 0;
   }
 
-  .list-item {
+  .list-item, .list-item-add {
     text-align: center;
     border: 1px solid ghostwhite;
     border-radius: 2em;
     width: 80%;
     margin: 1em 10%;
-    padding: 0.5em
+    padding: 0.5em;
+    list-style: none;
   }
+
+  .list-item-add {
+    background-color: #F4B41A;
+  }
+
+  .list-item-add:hover {
+    background-color: #f6be3c;
+    cursor: pointer;
+  }
+
+  li {
+    font-size: 1.2em;
+  }
+
+  .stock-list {
+    text-align: center;
+  }
+
 
   .footer {
     max-width: 100%;
@@ -258,34 +277,42 @@ export default {
 
   .tab {
     overflow: hidden;
-    border: 1px solid #ccc;
-    background-color: #f1f1f1;
+    text-align: center;
   }
 
   /* Style the buttons that are used to open the tab content */
   .tab button {
     background-color: inherit;
-    float: left;
+    font-size: 1.5em;
+    border-radius: 2em;
     border: none;
+    color: ghostwhite;
+    margin: 0 0.5em;
+    text-align: center;
+    border: ;
     outline: none;
     cursor: pointer;
-    padding: 14px 16px;
+    padding: 0.5em 1em;
     transition: 0.3s;
   }
 
   /* Change background color of buttons on hover */
   .tab button:hover {
-    background-color: #ddd;
+    color: #F4B41A;
   }
 
   /* Create an active/current tablink class */
   .tab button.active {
-    background-color: #ccc;
+    color: #F4B41A;
+    text-decoration: underline;
+  }
+
+  .tab button:focus {
+    outline: none;
   }
   /* Style the tab content */
   .tabcontent {
     padding: 6px 12px;
-    border: 1px solid #ccc;
     border-top: none;
   }
 

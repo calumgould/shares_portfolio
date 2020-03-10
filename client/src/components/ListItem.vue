@@ -1,5 +1,5 @@
 <template lang="html">
-  <li v-on:click="handleClick">{{stock.name}}</li>
+  <li class="list-item" v-on:click="handleClick">{{stock.name}}</li>
 </template>
 
 <script>
@@ -17,7 +17,6 @@ export default {
 </script>
 
 <style lang="css" scoped>
-li:hover {
-  color: blue;
-}
+
+
 </style>
