@@ -53,7 +53,7 @@
             <h2><span>500</span> shares</h2>
           </div>
         </div>
-        <stock-chart></stock-chart>
+        <portfolio-chart></portfolio-chart>
       </div>
     </div>
 
@@ -79,6 +79,7 @@
 <script>
 
 import StockChart from './components/StockChart.vue'
+import PortfolioChart from './components/PortfolioChart.vue'
 import StockList from './components/StockList.vue'
 import StockDetail from './components/StockDetail.vue'
 import ListItem from './components/ListItem.vue'
@@ -109,7 +110,8 @@ export default {
   components: {
     'stock-chart': StockChart,
     'stocks-list': StockList,
-    'stock-detail': StockDetail
+    'stock-detail': StockDetail,
+    'portfolio-chart': PortfolioChart
   },
   mounted() {
     eventBus.$on('submit-stock', (stock) => {
@@ -123,7 +125,7 @@ export default {
     });
 
     eventBus.$on('stock-selected', stock => (this.selectedStock = stock));
-    
+
     this.openDefaultTab('defaultOpen');
   },
   methods: {

@@ -8,9 +8,10 @@
 const API_KEY=process.env.VUE_APP_ENV_SHARESAPI
 import Highcharts from 'highcharts'
 import dark from '@/themes/dark.js'
+import PricesService from '@/services/PricesService.js'
 
 export default {
-  name: "stock-chart",
+  name: "portfolio-chart",
   mounted(){
     this.importShareData();
   },
@@ -108,7 +109,15 @@ export default {
       fetch(`https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${this.stockSymbol}&outputsize=compact&apikey=${API_KEY}`)
         .then(res => res.json())
         .then(data => {
-          this.stock = data
+
+
+          // Formatting stuff here
+
+
+          console.log("got data:", data["Time Series (Daily)"]["2020-03-10"])
+
+          // Save result of formatting
+          PricesService.addPrice({message: "success"})
         })
       }
 

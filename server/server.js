@@ -14,6 +14,9 @@ MongoClient.connect('mongodb://localhost:27017')
   const sharesCollection = db.collection('shares');
   const sharesRouter = createRouter(sharesCollection);
   app.use('/api/shares', sharesRouter);
+  const closePricesCollection = db.collection('closePrices');
+  const closePricesRouter = createRouter(closePricesCollection);
+  app.use('/api/closeprices', closePricesRouter);
 })
 .catch(console.error);
 
