@@ -6,7 +6,7 @@ Highcharts.createElement('link', {
     type: 'text/css'
 }, null, document.getElementsByTagName('head')[0]);
 Highcharts.theme = {
-    colors: ['#89B802', '#90ee7e', '#f45b5b', '#7798BF', '#aaeeee', '#ff0066',
+    colors: ['#F4B41A', '#90ee7e', '#f45b5b', '#7798BF', '#aaeeee', '#ff0066',
         '#eeaaee', '#55BF3B', '#DF5353', '#7798BF', '#aaeeee'],
     chart: {
         backgroundColor: {
@@ -147,14 +147,14 @@ Highcharts.theme = {
             },
             states: {
                 hover: {
-                    fill: '#89B802',
+                    fill: '#F4B41A',
                     stroke: '#000000',
                     style: {
                         color: 'ghostwhite'
                     }
                 },
                 select: {
-                    fill: '#89B802',
+                    fill: '#F4B41A',
                     stroke: '#000000',
                     style: {
                         color: 'ghostwhite'
@@ -179,8 +179,8 @@ Highcharts.theme = {
         outlineColor: '#CCC',
         maskFill: 'rgba(255,255,255,0.1)',
         series: {
-            color: '#89B802',
-            lineColor: '#89B802'
+            color: '#F4B41A',
+            lineColor: '#F4B41A'
         },
         xAxis: {
             gridLineColor: '#505053'

@@ -1,7 +1,8 @@
 <template>
   <div id="app">
     <div class="header">
-      <h1>Spend<span>.</span>Stock<sup>&#8482;</sup></h1>
+      <!-- <h1>Spend<span>.</span>Stock<sup>&#8482;</sup></h1> -->
+      <h1>Storacle<span>.</span></h1>
     </div>
     <div class="summary-container">
       <h1>Summary</h1>
@@ -47,6 +48,9 @@
       </div>
       <stock-chart></stock-chart>
     </div>
+    <div class="footer">
+      <p class="sponsor">Sponsored by OnTrack<span>.</span></p>
+    </div>
   </div>
 </template>
 
@@ -77,8 +81,8 @@ export default {
     padding: 0.5em 0 0 0;
   }
 
-  .header h1 span {
-    color: #89B802;
+  .header h1 span, .stock h2, .total h1 span, .list-item h2 span, .sponsor span {
+    color: #F4B41A;
   }
 
   .header h1 sup {
@@ -121,12 +125,8 @@ export default {
     background-color: #7e7e81;
   }
 
-  .stock h2, .total h1 span, .list-item h2 span {
-    color: #89B802
-  }
-
   .chart {
-    width: 68%;
+    width: 80%;
     float: right;
     padding: 1em;
     border: 1px solid ghostwhite;
@@ -134,7 +134,7 @@ export default {
   }
 
   .chart-container {
-    width: 100%;
+    width: 90%;
     display: flex;
     margin: 0 5%;
   }
@@ -159,5 +159,15 @@ export default {
     width: 80%;
     margin: 1em 10%;
     padding: 0.5em
+  }
+
+  .footer {
+    max-width: 100%;
+    margin-top: 4%;
+  }
+
+  .sponsor {
+    text-align: right;
+    padding: 1em;
   }
 </style>

@@ -109,6 +109,7 @@ export default {
       // UTCStartDate[2] = parseInt(UTCStartDate[2])
 
       UTCStartDate[1] = UTCStartDate[1] - 1
+      console.log(UTCStartDate);
       return Date.UTC(...UTCStartDate)
     }
   },
