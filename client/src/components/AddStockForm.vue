@@ -5,7 +5,7 @@
   <span v-bind:class="[isActive ? 'popuptext popuptextvisable' : 'popuptext popuptexthidden']" id="myPopup">
     <span v-on:click="handleClose" class="close" id="myPopupClose">&times;</span>
 
-    <form v-on:submit.prevent="handleSubmit">
+    <form class="popup-form" v-on:submit.prevent="handleSubmit">
 
       <label for="stock-name">Stock Name:</label><br>
       <input type="text" id="stock-name" name="stock-name" v-model="name"/><br>
@@ -69,19 +69,47 @@ export default {
 }
 /* The actual popup (appears on top) */
 .popup .popuptext {
-  width: 160px;
+  width: 90%;
   background-color: #555;
   color: #fff;
   text-align: center;
-  border-radius: 6px;
-  padding: 8px 0;
+  border: 1px solid ghostwhite;
+  border-radius: 2em;
+  padding: 0 1em 1em 1em;
   position: absolute;
   z-index: 1;
   bottom: 125%;
-  left: 50%;
+  left: 32%;
   margin-left: -80px;
   -webkit-animation: fadeIn 1s;
-  animation: fadeIn 1s
+  animation: fadeIn 1s;
+}
+
+.popup-form {
+  justify-content: center;
+  text-align: center;
+}
+
+.popup-form input[type="text"] {
+  padding: 0.5em 1em;
+  margin-bottom: 1em;
+  border-radius: 2em;
+  border: none;
+  outline: none;
+}
+
+.popup-form input[type="submit"] {
+  background-color: #F4B41A;
+  color: ghostwhite;
+  border-radius: 2em;
+  padding: 0.5em 1em;
+  font-size: 1em;
+  margin-top: 1em;
+}
+
+.popup-form input[type="submit"]:hover {
+  background-color: #f6be3c;
+  cursor: pointer;
 }
 
 .popup-add {
@@ -104,8 +132,8 @@ export default {
 
 .close {
   color: #aaaaaa;
-  float: right;
-  font-size: 28px;
+  position: relative;
+  font-size: 2em;
   font-weight: bold;
 }
 

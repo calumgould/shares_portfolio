@@ -4,19 +4,33 @@
       <summary-list-item v-for="(stock, index) in stocks" :stock="stock" :key="index" />
     </ul>
       <div class="total">
-        <h1>Total Value: <span>£ TOTAL VALUE</span></h1>
+        <h1>Total Value: <span>£ {{totalValue}}</span></h1>
       </div>
   </div>
 </template>
 
 <script>
+import StockChart from './StockChart.vue'
 import SummaryListItem from './SummaryListItem.vue'
 import { eventBus } from '@/main'
 export default {
   name: 'summary-list',
   props: ['stocks'],
+  data(){
+    return {
+      totalValue: 50
+    }
+  },
   components: {
     'summary-list-item': SummaryListItem
+  },
+  mounted(){
+    this.calculateTotal()
+  },
+  methods: {
+    calculateTotal(){
+      return this.totalValue = 200
+    }
   }
 }
 </script>

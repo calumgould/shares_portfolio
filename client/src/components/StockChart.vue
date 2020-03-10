@@ -17,7 +17,7 @@ export default {
   data(){
     return {
       stock: null,
-      stockSymbol: "AMZN",
+      stockSymbol: "MSFT",
 
       stockOptions: {
         rangeSelector: {
