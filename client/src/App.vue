@@ -34,7 +34,7 @@
         <div class="list-container">
           <h2 class="list-head">Your Shares</h2>
           <stocks-list :stocks="stocks"></stocks-list>
-          <add-stock class="list-item-add"></add-stock>
+          <add-stock></add-stock>
         </div>
         <stock-chart></stock-chart>
       </div>

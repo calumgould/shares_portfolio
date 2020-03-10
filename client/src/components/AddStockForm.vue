@@ -1,19 +1,17 @@
 <template lang="html">
-  <div class="popup" v-on:click="loadAddNewStockForm()">
 
-    <div class="stock-add">
-      <h4>Add new stock</h4>
-    </div>
-
-  <span class="popuptext" id="myPopup">
+  <div class="popup">
+    <span class="popup-add" v-on:click="loadAddNewStockForm">Add New Stock</span>
+  <span v-bind:class="[isActive ? 'popuptext popuptextvisable' : 'popuptext popuptexthidden']" id="myPopup">
+    <span v-on:click="handleClose" class="close" id="myPopupClose">&times;</span>
 
     <form v-on:submit.prevent="handleSubmit">
 
       <label for="stock-name">Stock Name:</label><br>
-      <input type="text" id="stock-name" name="stock-name" v-model="name" required /><br>
+      <input type="text" id="stock-name" name="stock-name" v-model="name"/><br>
 
       <label for="shares-amount">How Many Shares?:</label><br>
-      <input type="text" id="shares-amount" name="shares-amount" v-model.number="shares" required /><br>
+      <input type="text" id="shares-amount" name="shares-amount" v-model.number="shares"/><br>
 
       <input type="submit" name="submit" value="Add Stock"/><br>
 
@@ -30,70 +28,114 @@ export default {
   data(){
     return {
       name: '',
-      shares: ''
+      shares: '',
+      isActive: false
+
     }
   },
   methods: {
     loadAddNewStockForm() {
-  let popup = document.getElementById("myPopup");
-  popup.classList.toggle("show");
+      this.isActive = true;
     },
     handleSubmit() {
       eventBus.$emit('submit-stock', this.$data);
       this.name = this.shares = '';
+    },
+    handleClose() {
+      this.isActive = false;
+      console.log(this.isActive)
     }
   }
 }
 </script>
 
 <style lang="css" scoped>
+/* Popup container */
+.popup {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
+  margin: 0.5em 0;
+}
 
+.popup .popuptextvisable {
+  display: block;
+}
 
-  .popup {
-    position: relative;
-    display: inline-block;
-    cursor: pointer;
-  }
+.popup .popuptexthidden {
+  display: none;
+}
+/* The actual popup (appears on top) */
+.popup .popuptext {
+  width: 160px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -80px;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s
+}
 
-  .popup .popuptext {
-    visibility: hidden;
-    width: 160px;
-    background-color: #555;
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    padding: 8px 0;
-    position: absolute;
-    z-index: 1;
-    bottom: 125%;
-    left: 50%;
-    margin-left: -80px;
-  }
+.popup-add {
+  text-align: center;
+  border: 1px solid ghostwhite;
+  border-radius: 2em;
+  width: 90%;
+  padding: 0.5em 1.5em;
+  margin: 0.5em 5%;
+  font-size: 1.1em;
+  text-align: center;
+  background-color: #F4B41A;
+  color: ghostwhite;
+}
 
-  .popup .popuptext::after {
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    margin-left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: #555 transparent transparent transparent;
-  }
+.popup-add:hover {
+  background-color: #f6be3c;
+  cursor: pointer;
+}
 
-  .popup .show {
-    visibility: visible;
-    -webkit-animation: fadeIn 1s;
-    animation: fadeIn 1s
-  }
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
 
-  @-webkit-keyframes fadeIn {
-    from {opacity: 0;}
-    to {opacity: 1;}
-  }
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
 
-  @keyframes fadeIn {
-    from {opacity: 0;}
-    to {opacity:1 ;}
+/* Popup arrow */
+.popup .popuptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity:1 ;}
 }
 </style>
