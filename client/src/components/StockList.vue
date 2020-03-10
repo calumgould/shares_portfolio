@@ -3,7 +3,7 @@
   <ul>
     <list-item v-for="(stock, index) in stocks" :stock="stock" :key="index"></list-item>
   </ul>
-  <add-stock class="list-item-add"></add-stock>
+
 </div>
 </template>
 
@@ -19,7 +19,7 @@ export default {
   props: ['stocks'],
   components: {
   'list-item': ListItem,
-  'add-stock': AddStock
+
   },
 }
 </script>

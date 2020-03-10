@@ -36,22 +36,7 @@
       <div class="chart-container">
         <div class="list-container">
           <h2 class="list-head">Your Shares</h2>
-          <div class="list-item">
-            <h3>MSFT</h3>
-            <h2><span>2000</span> shares</h2>
-          </div>
-          <div class="list-item">
-            <h3>APPL</h3>
-            <h2><span>3500</span> shares</h2>
-          </div>
-          <div class="list-item">
-            <h3>GOOGL</h3>
-            <h2><span>1000</span> shares</h2>
-          </div>
-          <div class="list-item">
-            <h3>AMZN</h3>
-            <h2><span>500</span> shares</h2>
-          </div>
+          <stocks-list :stocks="stocks" :stock="selectedStock"></stocks-list>
         </div>
         <stock-chart></stock-chart>
       </div>
@@ -67,6 +52,7 @@
         <div class="list-container">
           <h2 class="list-head">Your Shares</h2>
           <stocks-list :stocks="stocks"></stocks-list>
+          <add-stock class="list-item-add"></add-stock>
         </div>
         <stock-chart></stock-chart>
       </div>
@@ -88,6 +74,7 @@ import StockDetail from './components/StockDetail.vue'
 import ListItem from './components/ListItem.vue'
 import StockService from './services/StockService.js'
 import { eventBus } from '@/main'
+import AddStock from './components/AddStockForm'
 
 export default {
   name: 'App',
@@ -113,7 +100,8 @@ export default {
   components: {
     'stock-chart': StockChart,
     'stocks-list': StockList,
-    'stock-detail': StockDetail
+    'stock-detail': StockDetail,
+    'add-stock': AddStock
   },
   mounted() {
     eventBus.$on('submit-stock', (stock) => {
@@ -228,6 +216,7 @@ export default {
     margin-right: 2%;
     border-radius: 2em;
     padding-bottom: 1em;
+    overflow: scroll;
   }
 
   .list-head{
