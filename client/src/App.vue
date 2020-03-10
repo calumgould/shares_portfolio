@@ -13,30 +13,12 @@
     <div id="SummaryPage"class="tabcontent">
       <div class="summary-container">
         <h1>Summary</h1>
-        <div class="stock">
-          <h3>MSFT</h3>
-          <h2>£59601</h2>
-        </div>
-        <div class="stock">
-          <h3>APPL</h3>
-          <h2>£86142</h2>
-        </div>
-        <div class="stock">
-          <h3>GOOGL</h3>
-          <h2>£24312</h2>
-        </div>
-        <div class="stock">
-          <h3>AMZN</h3>
-          <h2>£12590</h2>
-        </div>
-        <div class="total">
-          <h1>Total Value: <span>£182,645</span></h1>
-        </div>
+        <summary-list :stocks="stocks"/>
       </div>
       <div class="chart-container">
         <div class="list-container">
-          <h2 class="list-head">Your Shares</h2>
-          <stocks-list :stocks="stocks" :stock="selectedStock"></stocks-list>
+          <h2 class="list-head">Search</h2>
+
         </div>
         <stock-chart></stock-chart>
       </div>
@@ -73,8 +55,9 @@ import StockList from './components/StockList.vue'
 import StockDetail from './components/StockDetail.vue'
 import ListItem from './components/ListItem.vue'
 import StockService from './services/StockService.js'
-import { eventBus } from '@/main'
-import AddStock from './components/AddStockForm'
+import { eventBus } from '@/main.js'
+import AddStock from './components/AddStockForm.vue'
+import SummaryList from './components/SummaryList.vue'
 
 export default {
   name: 'App',
@@ -101,7 +84,8 @@ export default {
     'stock-chart': StockChart,
     'stocks-list': StockList,
     'stock-detail': StockDetail,
-    'add-stock': AddStock
+    'add-stock': AddStock,
+    'summary-list': SummaryList
   },
   mounted() {
     eventBus.$on('submit-stock', (stock) => {
