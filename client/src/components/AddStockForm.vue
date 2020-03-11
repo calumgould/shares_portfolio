@@ -82,7 +82,7 @@ export default {
     }
   }
 
-  </script>
+</script>
 
   <style>
   /* Popup container */
@@ -92,7 +92,7 @@ export default {
     cursor: pointer;
     width: 100%;
     text-align: center;
-    margin: 0.5em 0;
+    margin-top: 10em;
   }
 
   .popup .popuptextvisable {

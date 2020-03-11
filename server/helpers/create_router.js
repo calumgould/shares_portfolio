@@ -37,7 +37,6 @@ const createRouter = function (collection) {
 
   router.post(`/stock/:symbol`, (req, res) => {
     const symbol = req.params.symbol;
-    console.log(req.body);
     const stock = req.body
     const url = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${symbol}&outputsize=compact&apikey=${API_KEY}`
 

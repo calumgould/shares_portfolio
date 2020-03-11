@@ -36,7 +36,7 @@
           <stocks-list :stocks="stocks"></stocks-list>
           <add-stock></add-stock>
         </div>
-        <stock-chart></stock-chart>
+        <stock-chart :stock="selectedStock"></stock-chart>
       </div>
         <stock-detail v-if="selectedStock" :stock="selectedStock"></stock-detail>
     </div>
