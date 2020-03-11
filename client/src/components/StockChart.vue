@@ -5,7 +5,7 @@
 </template>
 
 <script>
-// const API_KEY=process.env.VUE_APP_ENV_SHARESAPI
+const API_KEY=process.env.VUE_APP_ENV_SHARESAPI
 import Highcharts from 'highcharts'
 import dark from '@/themes/dark.js'
 

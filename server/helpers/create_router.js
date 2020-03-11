@@ -35,15 +35,10 @@ const createRouter = function (collection) {
     });
   });
 
-  router.get(`/stock/:symbol`, (req, res) => {
+  router.post(`/stock/:symbol`, (req, res) => {
     const symbol = req.params.symbol;
-    const stock = {
-      name: "Apple",
-      symbol: "AAPL",
-      shares: 100,
-      closeValues: [],
-      startDate: null
-    }
+    console.log(req.body);
+    const stock = req.body
     const url = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${symbol}&outputsize=compact&apikey=${API_KEY}`
 
     fetch(url)
@@ -51,7 +46,6 @@ const createRouter = function (collection) {
     .then(data => {
       stock.closeValues = closeValuesResult(data)
       stock.startDate = dateFormatter(data)
-      console.log(stock);
 
       collection
       .insertOne(stock)

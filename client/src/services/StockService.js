@@ -7,10 +7,12 @@ export default {
     .then(res => res.json())
   },
 
-  addStock(stock) {
-    return fetch(baseURL, {
+  addStock(payload) {
+    const symbol = payload.symbol
+    const stock = 'stock/'
+    return fetch(baseURL + stock + symbol, {
       method: 'POST',
-      body: JSON.stringify(stock),
+      body: JSON.stringify(payload),
       headers: {
         'Content-Type': 'application/json'
       }
