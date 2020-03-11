@@ -1,5 +1,10 @@
 const express = require('express');
 const ObjectId = require('mongodb').ObjectID;
+const API_KEY=process.env.VUE_APP_ENV_SHARESAPI;
+const fetch = require('node-fetch');
+const closeValuesResult = require('./closeValueFormatter.js')
+const dateFormatter = require('./dateFormatter.js')
+
 
 const createRouter = function (collection) {
 
@@ -29,6 +34,38 @@ const createRouter = function (collection) {
       res.json({status: 500, error: err})
     });
   });
+
+  router.get(`/stock/:symbol`, (req, res) => {
+    const symbol = req.params.symbol;
+    const stock = {
+      name: "Apple",
+      symbol: "AAPL",
+      shares: 100,
+      closeValues: [],
+      startDate: null
+    }
+    const url = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${symbol}&outputsize=compact&apikey=${API_KEY}`
+
+    fetch(url)
+    .then(jsonData => jsonData.json())
+    .then(data => {
+      stock.closeValues = closeValuesResult(data)
+      stock.startDate = dateFormatter(data)
+      console.log(stock);
+
+      collection
+      .insertOne(stock)
+      .then((result) => {
+        res.json(result.ops[0])
+      })
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(500);
+        res.json({status: 500, error: err})
+      });
+    });
+
     // DESTROY - DELETE
   router.delete('/:id', (req, res) => { // MODIFIED
       const id = req.params.id;

@@ -5,7 +5,7 @@
 </template>
 
 <script>
-const API_KEY=process.env.VUE_APP_ENV_SHARESAPI
+// const API_KEY=process.env.VUE_APP_ENV_SHARESAPI
 import Highcharts from 'highcharts'
 import dark from '@/themes/dark.js'
 
@@ -78,29 +78,29 @@ export default {
     }
   },
   computed: {
-    closeValuesResult: function(){
-      if (!this.stock) return;
-      const closeValues = []
-      const data = this.stock['Time Series (Daily)']
-      for (let date in data) {
-        let closeValue = data[date]['4. close']
-        closeValues.unshift(closeValue)
-      }
-      const result =  closeValues.map(function(value) {
-        return parseFloat(value)
-      })
-      return result;
-    },
+    // closeValuesResult: function(){
+    //   if (!this.stock) return;
+    //   const closeValues = []
+    //   const data = this.stock['Time Series (Daily)']
+    //   for (let date in data) {
+    //     let closeValue = data[date]['4. close']
+    //     closeValues.unshift(closeValue)
+    //   }
+    //   const result =  closeValues.map(function(value) {
+    //     return parseFloat(value)
+    //   })
+    //   return result;
+    // },
 
-    formatDate: function(){
-      if (!this.stock) return;
-      const data = this.stock['Time Series (Daily)']
-      const startDate = Object.keys(data)[Object.keys(data).length-1]
-      const UTCStartDate = startDate.split('-')
-
-      UTCStartDate[1] = UTCStartDate[1] - 1
-      return Date.UTC(...UTCStartDate)
-    }
+    // formatDate: function(){
+    //   if (!this.stock) return;
+    //   const data = this.stock['Time Series (Daily)']
+    //   const startDate = Object.keys(data)[Object.keys(data).length-1]
+    //   const UTCStartDate = startDate.split('-')
+    //
+    //   UTCStartDate[1] = UTCStartDate[1] - 1
+    //   return Date.UTC(...UTCStartDate)
+    // }
   },
   methods: {
     importShareData(){
