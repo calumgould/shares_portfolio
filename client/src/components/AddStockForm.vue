@@ -5,23 +5,23 @@
     <span v-bind:class="[isActive ? 'popuptext popuptextvisable' : 'popuptext popuptexthidden']" id="myPopup">
       <span v-on:click="CloseAddNewStockForm" class="close" id="myPopupClose">&times;</span>
 
-      <form class="popup-form" v-on:submit.prevent="handleSubmit">
+      <form class="popup-form" @submit.prevent="handleSubmit">
 
-        <form v-on:submit.prevent="searchSymbol">
+        <form @submit.prevent="searchSymbol">
           <label for="search">Search Stock</label>
-          <input type="text" v-model="search" name="search" value="">
-          <input type="submit" name="search" value="search">
+          <input type="text" v-model="search" name="search" value="" required>
+          <input type="submit" name="search" value="Search">
         </form>
         <label for="stocksearch">Stock Select</label>
 
         <select v-model="selectedStock.symbol" class="" name="stocksearch">
           <option value="" disabled></option>
-          <option v-for="stock in searchResult" v-bind:value="stock">{{stock['1. symbol']}} - {{ stock['2. name']}}</option>
+          <option v-for="stock in searchResult" v-bind:value="stock" required>{{stock['1. symbol']}} - {{ stock['2. name']}}</option>
 
         </select>
 
         <label for="shares-amount">Shares owned:</label>
-        <input type="text" id="shares-amount" name="shares-amount" v-model.number="selectedStock.shares"/>
+        <input type="number" id="shares-amount" required name="shares-amount" v-model.number="selectedStock.shares"/>
 
         <input type="submit" name="submit" value="Add Stock"/><br>
 
@@ -42,7 +42,7 @@ export default {
       searchResult: [],
       selectedStock: {
         symbol: '',
-        shares: 0
+        shares: ''
       },
       newStock: {
         name: '',
