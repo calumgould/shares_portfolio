@@ -58,9 +58,6 @@ export default {
       this.isActive = true;
     },
     handleSubmit() {
-      this.newStock.symbol = this.selectedStock.symbol['1. symbol']
-      this.newStock.name = this.selectedStock.symbol['2. name']
-      this.newStock.shares = this.selectedStock.shares
       this.newStock = {
         name: this.selectedStock.symbol['2. name'],
         symbol: this.selectedStock.symbol['1. symbol'],
@@ -68,7 +65,7 @@ export default {
       }
       eventBus.$emit('submit-stock', this.$data.newStock)
       this.newStock.name = this.newStock.shares = this.newStock.symbol = ''
-      this.isActive = false    
+      this.isActive = false
     },
 
     CloseAddNewStockForm() {
@@ -83,11 +80,11 @@ export default {
         })
       }
     }
-  }c
+  }
 
   </script>
 
-  <style lang="css" scoped>
+  <style>
   /* Popup container */
   .popup {
     position: relative;

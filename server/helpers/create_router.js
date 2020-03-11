@@ -58,9 +58,10 @@ const createRouter = function (collection) {
       });
     });
     // UPDATE - PUT
-    router.put('/:id', (req, res) => {
+    router.patch('/:id', (req, res) => {
       const id = req.params.id;
       const updatedData = req.body;
+      delete updatedData._id
       collection
       .findOneAndUpdate(
         { _id: ObjectId(id) },

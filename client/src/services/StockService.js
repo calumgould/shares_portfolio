@@ -17,13 +17,22 @@ export default {
     })
     .then(res => res.json());
   },
-  updateStock(stock) {
-    return fetch(baseURL, {
+  updateStock(payload) {
+    const id = payload._id
+    console.log(id);
+    // delete payload._id
+    const newPayload = {
+      name: payload.name,
+      symbol: payload.symbol,
+      shares: parseInt(payload.shares)
+    }
+    return fetch(baseURL + id, {
       method: 'PATCH',
-      body: JSON.stringify(stock),
+      body: JSON.stringify(newPayload),
       headers: {
         'Content-Type': 'application/json'
       }
     })
+    .then(res => res.json())
   }
 }

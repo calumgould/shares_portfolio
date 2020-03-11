@@ -5,10 +5,10 @@
         <p>You own <span>{{stock.shares}}</span> shares</p>
       </div>
       <div class="stock-detail-form">
-        <form method="patch">
+        <form @submit.prevent="handleUpdate">
           <label for="shares-number">Shares: </label>
-          <input type="text" name="shares-number" v-model="stock.shares" value="">
-          <input type="submit" name="buy" value="Add Shares" v-on:click.prevent="handleUpdate()">
+          <input type="number" name="shares-number" v-model="updatedStock.shares" required>
+          <input type="submit" value="Update Shares">
         </form>
       </div>
   </div>
@@ -19,20 +19,21 @@
 import { eventBus } from '@/main.js'
 
 export default {
-  // data() {
-  //   return {
-  //     name: this.stocks.name,
-  //     shares: this.stocks.shares
-  //   }
-  // },
+  data() {
+    return {
+      updatedStock: {
+        _id: this.stock._id,
+        shares: this.stock.shares
+      }
+    }
+  },
   name: 'stock-detail',
   props: ['stock'],
   methods: {
     handleUpdate() {
-      eventBus.$emit('updated-stock', {
-        name: this.stock.name,
-        shares: this.stock.shares
-      })
+      this.stock.shares = this.updatedStock.shares
+      eventBus.$emit('updated-stock', this.updatedStock)
+      this.updatedStock.shares = null
     }
   }
 }
@@ -78,7 +79,7 @@ export default {
     font-size: 1.5em;
   }
 
-  .stock-detail-form input[type="text"]{
+  .stock-detail-form input[type="number"]{
     padding: 0.5em 1em;
     border-radius: 2em;
     outline: none;
