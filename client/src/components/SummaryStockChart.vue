@@ -71,9 +71,6 @@ export default {
         title: {
           text: `Your Stocks: Close Values`
         },
-        subtitle: {
-          text: 'Source: Alpha Vantage'
-        },
         series: this.series
       }
     }
