@@ -2,17 +2,19 @@ use shares;
 db.dropDatabase();
 
 db.shares.insertMany([
-
   {
-  name: 'MSFT',
-  shares: 50
+    name: 'Apple Inc.',
+    symbol: 'AAPL',
+    shares: 75
   },
   {
-  name: 'APPL',
-  shares: 35
+    name: 'Microsoft',
+    symbol: 'MSFT',
+    shares: 54
   },
   {
-  name: "GOOG",
-  shares: 75  
+    name: 'Google',
+    symbol:'GOOG',
+    shares: 32
   }
-])
+]);
