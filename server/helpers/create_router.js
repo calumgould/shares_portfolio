@@ -4,6 +4,7 @@ const API_KEY=process.env.VUE_APP_ENV_SHARESAPI;
 const fetch = require('node-fetch');
 const closeValuesResult = require('./closeValueFormatter.js')
 const dateFormatter = require('./dateFormatter.js')
+const totalValueCalc = require('./totalValueCalc.js')
 
 
 const createRouter = function (collection) {
@@ -45,6 +46,7 @@ const createRouter = function (collection) {
     .then(data => {
       stock.closeValues = closeValuesResult(data)
       stock.startDate = dateFormatter(data)
+      stock.totalValue = totalValueCalc(stock)
 
       collection
       .insertOne(stock)

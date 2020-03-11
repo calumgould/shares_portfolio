@@ -16,10 +16,6 @@
         <summary-list :stocks="stocks"/>
       </div>
       <div class="chart-container">
-        <div class="list-container">
-          <h2 class="list-head">Search</h2>
-
-        </div>
         <summary-stock-chart></summary-stock-chart>
       </div>
     </div>
@@ -180,7 +176,7 @@ export default {
   }
 
   .chart {
-    width: 80%;
+    width: 100%;
     float: right;
     padding: 1em;
     border: 1px solid ghostwhite;

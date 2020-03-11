@@ -13,8 +13,6 @@ export default {
   data(){
     return {
       stocks: null,
-
-
     }
   },
   methods: {
@@ -32,7 +30,6 @@ export default {
       if (!this.stocks) return {}
       console.log(this.stocks);
       return this.stocks.map( (stock) => {
-        // console.log(stock.name);
         return {
           name: stock.name,
           data: stock.closeValues,
@@ -42,8 +39,6 @@ export default {
           showInNavigator: true,
           compare: 'percent'
         }
-        // console.log(stockObject);
-        // console.log('hello');
       })
     },
 
