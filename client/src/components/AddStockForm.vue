@@ -44,7 +44,7 @@ export default {
         symbol: '',
         shares: 0
       },
-      submitStock: {
+      newStock: {
         name: '',
         symbol: '',
         shares: ''
@@ -57,17 +57,18 @@ export default {
     loadAddNewStockForm() {
       this.isActive = true;
     },
-    addStock() {
-      this.submitStock.symbol = this.selectedStock.symbol['1. symbol']
-      this.submitStock.name = this.selectedStock.symbol['2. name']
-      this.submitStock.shares = this.selectedStock.shares
-    },
-
     handleSubmit() {
-      this.addStock();
-      eventBus.$emit('submit-stock', this.$data.submitStock);
-      this.submitStock.name = this.submitStock.shares = this.submitStock.symbol ='';
-      this.isActive = false;
+      this.newStock.symbol = this.selectedStock.symbol['1. symbol']
+      this.newStock.name = this.selectedStock.symbol['2. name']
+      this.newStock.shares = this.selectedStock.shares
+      this.newStock = {
+        name: this.selectedStock.symbol['2. name'],
+        symbol: this.selectedStock.symbol['1. symbol'],
+        shares: this.selectedStock.shares
+      }
+      eventBus.$emit('submit-stock', this.$data.newStock)
+      this.newStock.name = this.newStock.shares = this.newStock.symbol = ''
+      this.isActive = false    
     },
 
     CloseAddNewStockForm() {
@@ -82,7 +83,7 @@ export default {
         })
       }
     }
-  }
+  }c
 
   </script>
 
