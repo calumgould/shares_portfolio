@@ -4,7 +4,7 @@
       <summary-list-item v-for="(stock, index) in stocks" :stock="stock" :key="index" />
     </ul>
       <div class="total">
-        <h1>Total Value: <span>£ {{1000}}</span></h1>
+        <h1>Total Value: <span>£ {{totalPortfolioValue}}</span></h1>
       </div>
   </div>
 </template>
@@ -22,6 +22,14 @@ export default {
   },
   components: {
     'summary-list-item': SummaryListItem
+  },
+  computed: {
+    totalPortfolioValue() {
+      if (!this.stocks) return {}
+      return this.$totalPortfolioValue = this.stocks.reduce( (runningTotal, stock) => {
+        return runningTotal += stock.totalValue
+      }, 0)
+    }
   }
   }
 </script>

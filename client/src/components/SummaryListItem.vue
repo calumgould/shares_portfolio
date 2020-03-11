@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="summary-list-items">
     <li class="summary-list-item"><h2>{{stock.name}}</h2></li>
-    <li class="summary-list-item"><h3><span>£ VALUE</span></h3></li>
+    <li class="summary-list-item"><h3><span>£{{stock.totalValue}}</span></h3></li>
   </div>
 </template>
 

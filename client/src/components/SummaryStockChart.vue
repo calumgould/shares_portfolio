@@ -28,7 +28,6 @@ export default {
   computed: {
     series() {
       if (!this.stocks) return {}
-      console.log(this.stocks);
       return this.stocks.map( (stock) => {
         return {
           name: stock.name,
