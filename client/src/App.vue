@@ -2,7 +2,7 @@
   <div id="app">
     <div class="header">
       <!-- <h1>Spend<span>.</span>Stock<sup>&#8482;</sup></h1> -->
-      <h1>Storacle<span>.</span></h1>
+      <img src="/images/storacle-logo.png" alt="">
     </div>
 
     <div class="tab">
@@ -127,7 +127,7 @@ export default {
     color: ghostwhite;
     font-size: 4em;
     text-align: center;
-    padding: 0.5em 0 0.5em 0;
+    padding: 0.5em 0 0.2em 0;
   }
 
   .header h1 span, .stock h2, .total h1 span, .list-item h2 span, .sponsor span {
@@ -140,6 +140,17 @@ export default {
     line-height: 0;
     vertical-align: baseline;
     top: -1.6em;
+  }
+
+  .header {
+    justify-content: center;
+    display: flex;
+  }
+
+
+  .header > img {
+    width: 300px;
+    padding: 2em 0 1em 0;
   }
 
   .summary-container {
@@ -189,7 +200,7 @@ export default {
   }
 
   .list-container {
-    width: 20%;
+    width: 30%;
     background-color: #4c4c4d;
     margin-right: 2%;
     border-radius: 2em;

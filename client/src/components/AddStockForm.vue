@@ -8,21 +8,25 @@
       <form id="submit-form" class="popup-form" @submit.prevent="handleSubmit">
 
         <form @submit.prevent="searchSymbol">
-          <label for="search">Search Stock</label>
+          <label for="search"></label>
           <input type="text" v-model="search" name="search" value="" required>
+          <br>
           <input type="submit" name="search" value="Search">
+          <br><hr>
         </form>
-        <label for="stocksearch">Stock Select</label>
+        <label for="stocksearch">Select Stock: </label>
 
         <select v-model="selectedStock.symbol" class="" name="stocksearch">
           <option value="" disabled></option>
           <option v-for="stock in searchResult" v-bind:value="stock" required>{{stock['1. symbol']}} - {{ stock['2. name']}}</option>
 
         </select>
-
+        <br>
+        <br>
         <label for="shares-amount">Shares owned:</label>
+        <br>
         <input type="number" id="shares-amount" required name="shares-amount" v-model.number="selectedStock.shares"/>
-
+        <br>
         <input type="submit" name="submit" value="Add Stock"/><br>
 
       </form>
@@ -86,6 +90,12 @@ export default {
 </script>
 
   <style>
+
+  hr {
+  border: 1px solid ghostwhite;
+  border-radius: 4em;
+  margin: 0em 5% 0.5em 5%;
+}
   /* Popup container */
   .popup {
     position: relative;
@@ -93,7 +103,7 @@ export default {
     cursor: pointer;
     width: 100%;
     text-align: center;
-    margin-top: 10em;
+    margin: 6em 0;
   }
 
   .popup .popuptextvisable {
@@ -115,7 +125,7 @@ export default {
     position: absolute;
     z-index: 1;
     bottom: 125%;
-    left: 32%;
+    left: 29%;
     margin-left: -80px;
     -webkit-animation: fadeIn 1s;
     animation: fadeIn 1s;
@@ -126,12 +136,13 @@ export default {
     text-align: center;
   }
 
-  .popup-form input[type="text"] {
+  .popup-form input[type="text"], .popup-form select, .popup-form input[type="number"] {
     padding: 0.5em 1em;
-    margin-bottom: 1em;
+    margin: 1em 0;
     border-radius: 2em;
     border: none;
     outline: none;
+    width: 90%;
   }
 
   .popup-form input[type="submit"] {
@@ -140,7 +151,7 @@ export default {
     border-radius: 2em;
     padding: 0.5em 1em;
     font-size: 1em;
-    margin-top: 1em;
+    margin-bottom: 1em;
   }
 
   .popup-form input[type="submit"]:hover {
@@ -154,8 +165,7 @@ export default {
     border-radius: 2em;
     width: 90%;
     padding: 0.5em 1.5em;
-    margin: 0.5em 5%;
-    font-size: 1.1em;
+    font-size: 1.3em;
     text-align: center;
     background-color: #F4B41A;
     color: ghostwhite;

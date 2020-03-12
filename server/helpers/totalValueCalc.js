@@ -4,7 +4,7 @@ const totalValueCalc = function(stock){
   const latestCloseValue = stock.closeValues[99][1]
   const shares = stock.shares
   const totalValue = latestCloseValue * shares
-  return parseInt(totalValue.toFixed(2))
+  return parseInt(totalValue)
 
 }
 
