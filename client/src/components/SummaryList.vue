@@ -4,7 +4,7 @@
       <summary-list-item v-for="(stock, index) in stocks" :stock="stock" :key="index" />
     </ul>
       <div class="total">
-        <h1>Total Value: <span>£ {{totalPortfolioValue}}</span></h1>
+        <h1>Total Value: <span>$ {{totalPortfolioValue}}</span></h1>
       </div>
   </div>
 </template>
@@ -37,10 +37,9 @@ export default {
 <style lang="css" scoped>
 
   .summary-list ul {
-    width: 90%;
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
-    margin: 0 5%;
     justify-content: center;
   }
 

@@ -82,7 +82,6 @@ export default {
     });
 
     eventBus.$on('updated-stock', (stock) => {
-      console.log(stock);
       StockService.updateStock(stock)
       .then(() => this.getStocks())
     });
@@ -99,16 +98,16 @@ export default {
     },
 
     openTab(pageName) {
-      let i, tabcontent, tablinks;
+      let index, tabcontent, tablinks;
 
       tabcontent = document.getElementsByClassName("tabcontent");
-      for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
+      for (index = 0; index < tabcontent.length; index++) {
+        tabcontent[index].style.display = "none";
       }
 
       tablinks = document.getElementsByClassName("tablinks");
-      for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "");
+      for (index = 0; index < tablinks.length; index++) {
+        tablinks[index].className = tablinks[index].className.replace(" active", "");
       }
 
       document.getElementById(pageName).style.display = "block";
@@ -116,13 +115,6 @@ export default {
     },
     openDefaultTab(tabId) {
       document.getElementById(tabId).click();
-    }
-  },
-  computed: {
-    defaultSelect() {
-      if (!this.selectedStock) {
-        this.selectedStock = this.stocks[0]
-      }
     }
   }
 }

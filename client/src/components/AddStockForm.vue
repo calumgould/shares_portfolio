@@ -5,7 +5,7 @@
     <span v-bind:class="[isActive ? 'popuptext popuptextvisable' : 'popuptext popuptexthidden']" id="myPopup">
       <span v-on:click="CloseAddNewStockForm" class="close" id="myPopupClose">&times;</span>
 
-      <form class="popup-form" @submit.prevent="handleSubmit">
+      <form id="submit-form" class="popup-form" @submit.prevent="handleSubmit">
 
         <form @submit.prevent="searchSymbol">
           <label for="search">Search Stock</label>
@@ -64,14 +64,15 @@ export default {
         shares: this.selectedStock.shares
       }
       eventBus.$emit('submit-stock', this.$data.newStock)
-      this.newStock.name = this.newStock.shares = this.newStock.symbol = ''
+      this.newStock.name = this.newStock.shares = this.newStock.symbol = this.search = this.selectedStock.shares = this.selectedStock.symbol = ''
+      this.searchResult = []
       this.isActive = false
     },
 
     CloseAddNewStockForm() {
       this.isActive = false;
-      console.log(this.isActive)
     },
+
     searchSymbol(){
       fetch(`https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=${this.search}&apikey=${API_KEY}`)
         .then(res => res.json())

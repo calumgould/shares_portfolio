@@ -2,7 +2,7 @@
   <div v-if="stock" id="StockDetail" class="stock-detail">
       <div class="stock-detail-item">
         <h2>{{stock.name}}</h2>
-        <p>You own <span>{{stock.shares}}</span> shares</p>
+        <p>You own <span>{{stock.shares}}</span> shares worth <span>$ {{stock.totalValue}}</span></p>
       </div>
       <div class="stock-detail-form">
         <form @submit.prevent="handleUpdate">
@@ -23,7 +23,8 @@ export default {
     return {
       updatedStock: {
         _id: this.stock._id,
-        shares: this.stock.shares
+        shares: null,
+        latestCloseValue: this.stock.closeValues[99][1]
       }
     }
   },
@@ -32,9 +33,13 @@ export default {
   methods: {
     handleUpdate() {
       this.stock.shares = this.updatedStock.shares
+      this.stock.totalValue = parseInt(this.updatedStock.latestCloseValue * this.updatedStock.shares)
       eventBus.$emit('updated-stock', this.updatedStock)
       this.updatedStock.shares = null
     }
+  },
+  computed: {
+
   }
 }
 </script>

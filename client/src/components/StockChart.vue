@@ -1,6 +1,7 @@
 <template lang="html">
   <div class="chart">
     <highcharts v-if="stock" class="stock-chart" :constructor-type="'stockChart'" :options="stockOptions" />
+    <h3 v-else>Select a stock to begin</h3>
   </div>
 </template>
 
@@ -22,23 +23,11 @@ export default {
         title: {
           text: `${this.stock.name} Close Values`
         },
-        // xAxis: {
-        //   type:'datetime',
-        //   tickInterval: 1,
-        //   breaks: [{
-        //     from: 1246579200000,
-        //     to: 1246838400000,
-        //     breakSize: 3600000 *48, // 2 days gap
-        //     repeat: 604800000 // Repeat every week
-        //   }]
-        // },
         series: [{
           name: `${this.stock.symbol}`,
           data: this.stock.closeValues,
           type: 'areaspline',
           threshold: null,
-          // pointStart: this.stock.startDate,
-          // pointInterval: 1000 * 3600 * 24,
           tooltip: {
             valueDecimals: 2
           },

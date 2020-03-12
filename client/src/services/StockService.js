@@ -21,12 +21,11 @@ export default {
   },
   updateStock(payload) {
     const id = payload._id
-    console.log(id);
-    // delete payload._id
     const newPayload = {
       name: payload.name,
       symbol: payload.symbol,
-      shares: parseInt(payload.shares)
+      shares: parseInt(payload.shares),
+      totalValue: parseInt(payload.latestCloseValue * payload.shares)
     }
     return fetch(baseURL + id, {
       method: 'PATCH',
