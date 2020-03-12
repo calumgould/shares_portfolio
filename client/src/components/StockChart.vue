@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="chart">
     <highcharts v-if="stock" class="stock-chart" :constructor-type="'stockChart'" :options="stockOptions" />
-    <h3 v-else>Select a stock to begin</h3>
+    <h1 v-else>Select a stock to begin</h1>
   </div>
 </template>
 
@@ -52,5 +52,11 @@ export default {
 </script>
 
   <style>
+
+  .chart > h1 {
+    font-size: 2em;
+    margin-top: 20%;
+    text-align: center;
+  }
 
   </style>
