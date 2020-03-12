@@ -117,6 +117,13 @@ export default {
     openDefaultTab(tabId) {
       document.getElementById(tabId).click();
     }
+  },
+  computed: {
+    defaultSelect() {
+      if (!this.selectedStock) {
+        this.selectedStock = this.stocks[0]
+      }
+    }
   }
 }
 </script>
