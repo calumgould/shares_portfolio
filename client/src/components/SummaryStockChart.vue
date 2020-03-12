@@ -33,8 +33,6 @@ export default {
           name: stock.name,
           data: stock.closeValues,
           threshold: null,
-          // pointStart: stock.startDate,
-          // pointInterval: 1000 * 3600 * 24,
           showInNavigator: true,
           compare: 'percent'
         }
