@@ -1,4 +1,4 @@
-const baseURL = 'http://localhost:3000/api/shares/'
+const baseURL = 'api/shares/'
 
 export default {
 

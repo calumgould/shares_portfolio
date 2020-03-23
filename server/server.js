@@ -18,6 +18,11 @@ MongoClient.connect('mongodb://localhost:27017')
 })
 .catch(console.error);
 
+if(process.env.NODE_ENV === 'production') {
+  app.use(express.static(__dirname + '/public/'))
+
+  app.get(/.*/, (req, res) => res.sendFile(__dirname + '/public/index.html'))
+}
 
 app.listen(3000, function() {
   console.log(`Listening on port ${ this.address().port }`);
