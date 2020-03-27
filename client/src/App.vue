@@ -211,6 +211,7 @@ export default {
   .list-head{
     text-align: center;
     padding: 1em 0 0.5em 0;
+    /* margin-bottom: 10em; */
   }
 
   .list-item, .list-item-add {
