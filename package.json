@@ -1,10 +1,15 @@
 {
-  "name": "shares_portfolio",
+  "name": "shares-portfolio",
   "version": "1.0.0",
+  "engines": {
+    "node": "13.2.x"
+  },
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server/server.js",
+    "heroku-postbuild": "cd ./client && npm install && npm run build && npm audit fix"
   },
   "repository": {
     "type": "git",
