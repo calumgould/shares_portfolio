@@ -9,6 +9,7 @@ cd client
 npm install
 npm run serve
 ```
+Navigate back to root folder
 
 ```
 cd server
