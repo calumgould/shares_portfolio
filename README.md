@@ -18,7 +18,7 @@ npm run server:dev
 
 ## Demo
 
-![App Demo](public/storacle_demo.gif)
+![App Demo](client/public/storacle_demo.gif)
 
 ### Technologies
 
