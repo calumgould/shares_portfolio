@@ -1,7 +1,7 @@
 <template lang="html">
 
   <div class="popup">
-    <span class="popup-add" v-on:click="loadAddNewStockForm">Add New Stock</span>
+    <div class="popup-add" v-on:click="loadAddNewStockForm">Add New Stock</div>
     <span v-bind:class="[isActive ? 'popuptext popuptextvisable' : 'popuptext popuptexthidden']" id="myPopup">
       <span v-on:click="CloseAddNewStockForm" class="close" id="myPopupClose">&times;</span>
 
@@ -126,7 +126,7 @@ export default {
     z-index: 1;
     bottom: 125%;
     left: 29%;
-    margin-left: -80px;
+    margin-left: -70px;
     -webkit-animation: fadeIn 1s;
     animation: fadeIn 1s;
   }
@@ -163,7 +163,8 @@ export default {
     text-align: center;
     border: 1px solid ghostwhite;
     border-radius: 2em;
-    width: 90%;
+    width: 75%;
+    margin: 0 auto;
     padding: 0.5em 1.5em;
     font-size: 1.3em;
     text-align: center;

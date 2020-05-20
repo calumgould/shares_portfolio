@@ -10,7 +10,7 @@
       <button class="tablinks" v-on:click="openTab('StockChart')">Stocks</button>
     </div>
 
-    <div id="SummaryPage"class="tabcontent">
+    <div id="SummaryPage" class="tabcontent">
       <div class="summary-container">
         <h1>Summary</h1>
         <summary-list :stocks="stocks"/>
@@ -28,9 +28,13 @@
 
       <div class="chart-container">
         <div class="list-container">
+          <div class="list-info">
           <h2 class="list-head">Your Shares</h2>
           <stocks-list :stocks="stocks"></stocks-list>
+          </div>
+          <div class="add-button">
           <add-stock></add-stock>
+          </div>
         </div>
         <stock-chart :stock="selectedStock"></stock-chart>
       </div>
@@ -200,18 +204,30 @@ export default {
   }
 
   .list-container {
-    width: 30%;
+    width: 35%;
+    height: 70vh;
     background-color: #4c4c4d;
     margin-right: 2%;
     border-radius: 2em;
     padding-bottom: 1em;
-    overflow: scroll;
+    overflow: show;
   }
 
   .list-head{
     text-align: center;
     padding: 1em 0 0.5em 0;
     /* margin-bottom: 10em; */
+  }
+
+  .list-info {
+    height: 80%;
+  }
+
+  .add-button {
+    height: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .list-item, .list-item-add {
@@ -268,7 +284,6 @@ export default {
     color: ghostwhite;
     margin: 0 0.5em;
     text-align: center;
-    border: ;
     outline: none;
     cursor: pointer;
     padding: 0.5em 1em;
