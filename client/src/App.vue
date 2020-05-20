@@ -28,14 +28,13 @@
 
       <div class="chart-container">
         <div class="list-container">
-          <div class='list-info'>
-            <h2 class="list-head">Your Shares</h2>
-            <stocks-list :stocks="stocks"></stocks-list>
+          <div class="list-info">
+          <h2 class="list-head">Your Shares</h2>
+          <stocks-list :stocks="stocks"></stocks-list>
           </div>
-          <div class='list-button'>
-            <add-stock></add-stock>
+          <div class="add-button">
+          <add-stock></add-stock>
           </div>
-          
         </div>
         <stock-chart :stock="selectedStock"></stock-chart>
       </div>
@@ -205,7 +204,8 @@ export default {
   }
 
   .list-container {
-    width: 30%;
+    width: 35%;
+    height: 70vh;
     background-color: #4c4c4d;
     margin-right: 2%;
     border-radius: 2em;
@@ -223,7 +223,7 @@ export default {
     height: 80%;
   }
 
-  .list-button {
+  .add-button {
     height: 20%;
     display: flex;
     align-items: center;

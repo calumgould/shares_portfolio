@@ -126,8 +126,8 @@ export default {
     text-align: center;
     z-index: 1;
     bottom: 125%;
-    left: 30%;
-    margin-left: -5.8rem;
+    left: 29%;
+    margin-left: -70px;
     -webkit-animation: fadeIn 1s;
     animation: fadeIn 1s;
   }
@@ -167,6 +167,7 @@ export default {
     border: 1px solid ghostwhite;
     border-radius: 2em;
     width: 75%;
+    margin: 0 auto;
     padding: 0.5em 1.5em;
     font-size: 1.3em;
     text-align: center;
